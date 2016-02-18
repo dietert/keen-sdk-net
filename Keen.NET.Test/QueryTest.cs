@@ -1136,6 +1136,21 @@ namespace Keen.Net.Test
         }
 
         [Test]
+        public void Serialize_NullValue_Success()
+        {
+            var filter = new QueryFilter("prop", QueryFilter.FilterOperator.Equals(), null);
+
+            var json = JObject.FromObject(filter).ToString();
+
+            const string expectedJson = "{\r\n" +
+                                        "  \"property_name\": \"prop\",\r\n" +
+                                        "  \"operator\": \"eq\",\r\n" +
+                                        "  \"property_value\": null\r\n" +
+                                        "}";
+            Assert.AreEqual(expectedJson, json);
+        }
+
+        [Test]
         public void Serialize_SimpleValue_Success()
         {
             var filter = new QueryFilter("prop", QueryFilter.FilterOperator.Equals(), "val");

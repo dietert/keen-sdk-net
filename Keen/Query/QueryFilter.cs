@@ -142,8 +142,6 @@ namespace Keen.Core.Query
         {
             if (string.IsNullOrWhiteSpace(property))
                 throw new ArgumentNullException("property");
-            if (null == value)
-                throw new ArgumentNullException("value");
 
             PropertyName = property;
             Operator = op;
